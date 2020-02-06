@@ -1,0 +1,91 @@
+# depslib dependency file v1.0
+1580391926 source:c:\users\umurerwam\desktop\tptraitement\main.cpp
+	<stdio.h>
+
+1581020672 c:\users\umurerwam\desktop\tptraitement\include\imagebase.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+
+1581020852 source:c:\users\umurerwam\desktop\tptraitement\src\imagebase.cpp
+	"ImageBase.h"
+	"../image_ppm.h"
+
+1580390477 c:\users\umurerwam\desktop\tptraitement\image_ppm.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<math.h>
+
+1580413450 source:c:\users\umurerwam\desktop\tptraitement\profil.cpp
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<string>
+
+1580416096 source:c:\users\umurerwam\desktop\tptraitement\histo.cpp
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+
+1580423625 source:c:\users\umurerwam\desktop\tptraitement\erosion.cpp
+	"ImageBase.h"
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+
+1580425268 source:c:\users\umurerwam\desktop\tptraitement\dilatation.cpp
+	"ImageBase.h"
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+
+1580432315 source:c:\users\umurerwam\desktop\tptraitement\fermeture.cpp
+	"ImageBase.h"
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+
+1580426140 source:c:\users\umurerwam\desktop\tptraitement\ouverture.cpp
+	"ImageBase.h"
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+
+1581008162 source:c:\users\umurerwam\desktop\tptraitement\difference.cpp
+	"ImageBase.h"
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+
+1581018067 source:c:\users\umurerwam\desktop\tptraitement\expensiondynamique.cpp
+	"ImageBase.h"
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+
+1581020128 source:c:\users\umurerwam\desktop\tptraitement\seuillageextrema.cpp
+	"ImageBase.h"
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+
