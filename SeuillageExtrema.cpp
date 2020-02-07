@@ -6,7 +6,7 @@
 #include<fstream>
 #include<string>
 #include<vector>
-
+#include<math.h>
 using namespace std;
 void Histo(ImageBase &inputImage,fstream &dataOutput,vector <int> &occurences);
 void seuillage(ImageBase &imIn,ImageBase &imOut,int &seuil);
@@ -46,12 +46,14 @@ int SminRed=40,SmaxRed=220,SminBlue=45,SmaxBlue=215,SminGreen=50,SmaxGreen=210;
 	vector<int> occurencesRed1(256,0);
 	vector<int> occurencesBlue1(256,0);
 	vector<int> occurencesGreen1(256,0);
+	vector<int> occurencesGreen11(256,0);
 	fstream outputR("BaboonHistoRed.dat",fstream::out);
 	fstream outputB("BaboonHistoBlue.dat",fstream::out);
 	fstream outputG("BaboonHistoGreen.dat",fstream::out);
 	fstream outputR1("BaboonHistoExtremaRed.dat",fstream::out);
 	fstream outputB1("BaboonHistoExtremaBlue.dat",fstream::out);
 	fstream outputG1("BaboonHistoExtremaGreen.dat",fstream::out);
+	fstream outputG11("BaboonHistoExtremaGreencopy.dat",fstream::out);
 R=(imIn.getPlan(imIn.PLAN_R));
 imgR=(*R);
 B=(imIn.getPlan(imIn.PLAN_B));
@@ -60,11 +62,12 @@ G=(imIn.getPlan(imIn.PLAN_G));
 imgG=(*G);
 ImageBase imgRO(imgR.getWidth(),imgR.getHeight(),imgR.getColor());
 ImageBase imgBO(imgB.getWidth(),imgB.getHeight(),imgB.getColor());
-ImageBase imgGO(imgB.getWidth(),imgB.getHeight(),imgB.getColor());
+ImageBase imgGO(imgG.getWidth(),imgG.getHeight(),imgG.getColor());
 ImageBase imgRO1(imgR.getWidth(),imgR.getHeight(),imgR.getColor());
 ImageBase imgBO1(imgB.getWidth(),imgB.getHeight(),imgB.getColor());
-ImageBase imgGO1(imgB.getWidth(),imgB.getHeight(),imgB.getColor());
+ImageBase imgGO1(imgG.getWidth(),imgG.getHeight(),imgG.getColor());
 
+cout<<"alpha"<<endl;
 Histo(imgR,outputR,occurencesRed);
 Histo(imgB,outputB,occurencesBlue);
 Histo(imgG,outputG,occurencesGreen);
@@ -77,13 +80,19 @@ Histo(imgRO,outputR1,occurencesRed1);
 Histo(imgBO,outputB1,occurencesBlue1);
 Histo(imgGO,outputG1,occurencesGreen1);
 
+
+
+Expension(imgGO,imgGO1);
 Expension(imgRO,imgRO1);
 Expension(imgBO,imgBO1);
-Expension(imgGO,imgGO1);
 
+Histo(imgGO1,outputG11,occurencesGreen11);
 imOut.set_plan(imOut.PLAN_R,imgRO1);
 imOut.set_plan(imOut.PLAN_B,imgBO1);
 imOut.set_plan(imOut.PLAN_G,imgGO1);
+cout<<"yoo"<<endl;
+
+imOut.save(cNomImgOut);
 
 
 
@@ -194,11 +203,12 @@ for(int j=255;j>=0;j--){
 void Expension(ImageBase &imgIn,ImageBase &imgOut){
 
 vector<int> occurences(256,0);
- fstream output2("blackHistoExtended.dat",fstream::out);
- fstream output1("blackHisto.dat",fstream::out);
+ fstream output2("baboonHistoExtended.dat",fstream::out);
+ fstream output1("baboonHisto.dat",fstream::out);
 
 Histo(imgIn,output1,occurences);
 int minn=0,maxx=0;
+
 
 SearchAlphaAndbeta(occurences,minn,maxx);
 int alpha = -((float)255.0 * minn) / (maxx-minn);
@@ -210,15 +220,15 @@ for(int x = 0; x < imgIn.getHeight(); ++x)
 		{
 
 		    {
-		    imgOut[x][y]=alpha+imgIn[x][y]*beta;
+		    imgOut[x][y]=round(alpha+imgIn[x][y]*beta);
 
 		    }
 
 		    }
-		    vector<int> occurences1(256,0);
+		   // vector<int> occurences1(256,0);
 
 
-		Histo(imgOut,output2,occurences1);
+		//Histo(imgOut,output2,occurences1);
 
 
 
